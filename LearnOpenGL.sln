@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Textures", "Textures\Textur
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YoutubeOpenGL", "YoutubeOpenGL\YoutubeOpenGL.vcxproj", "{9F77F150-85BE-4EB8-87F2-F0F481AEFD5A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YoutubeOpenGL3D", "YoutubeOpenGL3D\YoutubeOpenGL3D.vcxproj", "{EAD60B28-19C8-4A24-AB1F-CF0272EB5CD9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{9F77F150-85BE-4EB8-87F2-F0F481AEFD5A}.Release|x64.Build.0 = Release|x64
 		{9F77F150-85BE-4EB8-87F2-F0F481AEFD5A}.Release|x86.ActiveCfg = Release|Win32
 		{9F77F150-85BE-4EB8-87F2-F0F481AEFD5A}.Release|x86.Build.0 = Release|Win32
+		{EAD60B28-19C8-4A24-AB1F-CF0272EB5CD9}.Debug|x64.ActiveCfg = Debug|x64
+		{EAD60B28-19C8-4A24-AB1F-CF0272EB5CD9}.Debug|x64.Build.0 = Debug|x64
+		{EAD60B28-19C8-4A24-AB1F-CF0272EB5CD9}.Debug|x86.ActiveCfg = Debug|Win32
+		{EAD60B28-19C8-4A24-AB1F-CF0272EB5CD9}.Debug|x86.Build.0 = Debug|Win32
+		{EAD60B28-19C8-4A24-AB1F-CF0272EB5CD9}.Release|x64.ActiveCfg = Release|x64
+		{EAD60B28-19C8-4A24-AB1F-CF0272EB5CD9}.Release|x64.Build.0 = Release|x64
+		{EAD60B28-19C8-4A24-AB1F-CF0272EB5CD9}.Release|x86.ActiveCfg = Release|Win32
+		{EAD60B28-19C8-4A24-AB1F-CF0272EB5CD9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
