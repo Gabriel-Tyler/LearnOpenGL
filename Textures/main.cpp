@@ -144,7 +144,7 @@ int main()
 	ourShader.setFloat("xOffset", xOffset);
 
 	// uncomment for wireframe mode
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	//int i = 1;
 	// render loop (every iteration is a frame)
 	// ----------------------------------------
