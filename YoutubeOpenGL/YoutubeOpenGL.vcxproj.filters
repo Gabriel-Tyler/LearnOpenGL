@@ -16,7 +16,7 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Resource Files\Shaders">
+    <Filter Include="Source Files\Shaders">
       <UniqueIdentifier>{8e160160-e717-4bf4-accb-88fdc5434d3b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -68,10 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="default.frag">
-      <Filter>Resource Files\Shaders</Filter>
+      <Filter>Source Files\Shaders</Filter>
     </None>
     <None Include="default.vert">
-      <Filter>Resource Files\Shaders</Filter>
+      <Filter>Source Files\Shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

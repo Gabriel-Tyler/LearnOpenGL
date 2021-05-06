@@ -64,9 +64,9 @@ int main()
 	EBO EBO1(cfg::indices, sizeof(cfg::indices));
 
 	// link the VBO to the VAO
-	VAO1.linkAttrib(VBO1, 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
-	VAO1.linkAttrib(VBO1, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3*sizeof(float)));
-	VAO1.linkAttrib(VBO1, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6*sizeof(float)));
+	VAO1.linkAttrib(&VBO1, 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
+	VAO1.linkAttrib(&VBO1, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3*sizeof(float)));
+	VAO1.linkAttrib(&VBO1, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6*sizeof(float)));
 
 	// unbind the objects to prevent accidental modification to them
 	VAO1.unbindVAO();

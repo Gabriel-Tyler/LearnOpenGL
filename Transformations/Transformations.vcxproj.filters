@@ -14,10 +14,10 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Resource Files\Textures">
-      <UniqueIdentifier>{0c6580c9-20ee-4cf5-9322-8946b5da1bef}</UniqueIdentifier>
+      <UniqueIdentifier>{2acb037a-0956-498e-8a57-6fee1c18a081}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Shaders">
-      <UniqueIdentifier>{98b77149-2bb3-448f-82b4-f9cb82dd1519}</UniqueIdentifier>
+      <UniqueIdentifier>{73db0a7a-9e2d-4d45-b269-b0833bce595e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -32,21 +32,21 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="default.frag">
+    <None Include="default.vert">
       <Filter>Source Files\Shaders</Filter>
     </None>
-    <None Include="default.vert">
+    <None Include="default.frag">
       <Filter>Source Files\Shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Texture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="VAO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VBO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cfg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EBO.h">
@@ -55,11 +55,17 @@
     <ClInclude Include="Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cfg.h">
+    <ClInclude Include="Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="stb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="VAO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -73,12 +79,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="stb.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
