@@ -1,2 +1,2 @@
 # LearnOpenGL
-Learning OpenGL
+Learning OpenGL with learnopengl.com
