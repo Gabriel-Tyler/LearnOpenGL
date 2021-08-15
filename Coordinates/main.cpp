@@ -52,6 +52,10 @@ int main()
 
 	// load GLAD to configure OpenGL
 	gladLoadGL();
+
+	// configure global opengl state
+	glEnable(GL_DEPTH_TEST);
+
 	// specify the viewport of OpenGL in the window
 	glViewport(0, 0, cfg::width, cfg::height);
 
@@ -65,17 +69,14 @@ int main()
 
 	// generate the VBO and EBO and binds them
 	VBO VBO1(cfg::vertices, sizeof(cfg::vertices));
-	EBO EBO1(cfg::indices, sizeof(cfg::indices));
 
 	// link the VBO to the VAO
-	VAO1.linkAttrib(&VBO1, 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
-	VAO1.linkAttrib(&VBO1, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3*sizeof(float)));
-	VAO1.linkAttrib(&VBO1, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6*sizeof(float)));
+	VAO1.linkAttrib(&VBO1, 0, 3, GL_FLOAT, 5 * sizeof(float), (void*)0);
+	VAO1.linkAttrib(&VBO1, 1, 2, GL_FLOAT, 5 * sizeof(float), (void*)(3*sizeof(float)));
 
 	// unbind the objects to prevent accidental modification to them
 	VAO1.unbindVAO();
 	VBO1.unbindVBO();
-	EBO1.unbindEBO();
 
 	// generate a texture object for the cutecat.png
 	Texture cutecat("cutecat.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
@@ -95,30 +96,33 @@ int main()
 			cfg::clear[3]
 		);
 		// clear the back buffer and assign a new color to it
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// tell OpenGL which shader program to use
 		ourShader.activateShader();
 		// bind the cutecat texture so that it appears in rendering
 		cutecat.bindTexture();
+
+		// create transformations
+		glm::mat4 view  = glm::mat4(1.0f);
+		glm::mat4 projection = glm::mat4(1.0f);
+		view = glm::translate(view, glm::vec3((float)std::sin(glfwGetTime()), (float)std::cos(glfwGetTime()), -5.0f));
+		projection = glm::perspective(glm::radians(45.0f), (float)cfg::width/(float)cfg::height, 0.1f, 100.0f);
+
+		// pass transformations to the shaders
+		ourShader.setMat4("view", 1, GL_FALSE, view);
+		ourShader.setMat4("projection", 1, GL_FALSE, projection);
+
 		// bind VAO so openGL knows to use it
-		VAO1.bindVAO(); 
-
-		glm::mat4 trans = glm::mat4(1.0f);
-		trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
-		trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
-
-		ourShader.setMat4("transform", 1, GL_FALSE, trans);
-
-		// render primitives from array data
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-		trans = glm::mat4(1.0f);
-		trans = glm::translate(trans, glm::vec3(-0.5f, 0.5f, 0.0f));
-		trans = glm::scale(trans, glm::vec3(std::sin((float)glfwGetTime()*2.0), 1.0f, 1.0f));
-
-		ourShader.setMat4("transform", 1, GL_FALSE, trans);
-
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		VAO1.bindVAO();
+		for (int i = 0; i < 10; ++i)
+		{
+			glm::mat4 model = glm::mat4(1.0f);
+			model = glm::translate(model, cfg::cubePositions[i]);
+			float angle = 20.0f * i;
+			model = glm::rotate(model, glm::radians((float)glfwGetTime()*45.0f + angle), glm::vec3(0.5f, 1.0f, 0.0f));
+			ourShader.setMat4("model", 1, GL_FALSE, model);
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+		}
 
 		// swap the buffers
 		glfwSwapBuffers(window);
@@ -129,7 +133,6 @@ int main()
 	// delete the objects that were created
 	VAO1.deleteVAO();
 	VBO1.deleteVBO();
-	EBO1.deleteEBO();
 	cutecat.deleteTexture();
 	ourShader.deleteShader();
 	// delete window

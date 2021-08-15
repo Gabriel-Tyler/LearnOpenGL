@@ -9,7 +9,6 @@ layout (location = 1) in vec3 aColor;
 // texture coordinate
 layout (location = 2) in vec2 aTex;
 
-
 // outputs the color for the fragment shader
 out vec3 color;
 
@@ -20,11 +19,14 @@ out vec2 texCoord;
 // controls the scale of the vertices
 uniform float scale;
 
+// transformation matrix
+uniform mat4 transform;
+
 
 void main()
 {
 	// outputs the positions/coordinates of all vertices
-	gl_Position = vec4(aPos.x + aPos.x * scale, aPos.y + aPos.y * scale, aPos.z + aPos.z * scale, 1.0f);
+	gl_Position = transform * vec4(aPos.xyz, 1.0f);
 
 	// assigns the colors from the vertex data to "color"
 	color = aColor;
